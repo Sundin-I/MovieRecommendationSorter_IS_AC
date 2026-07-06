@@ -45,7 +45,7 @@ int main(){
             movieData.showTopKmovies_bygenre();
         }
         else if (userInput == "6") {
-            movieData.algorithmComparision();
+            movieData.algorithmComparison();
         }
         else if (userInput == "7") {
             movieData.searchTitles();

@@ -175,7 +175,7 @@ void movieCollection::showTopKmovies_bygenre() {
 }
 
 
-void movieCollection::algorithmComparision() {
+void movieCollection::algorithmComparison() {
     int k;
     cout<<"Type how many movies you want:"<<endl;
     cin>>k;

@@ -23,7 +23,7 @@ public:
     void calculationofScores();
     void showTopKmovies();
     void showTopKmovies_bygenre();
-    void algorithmComparision();
+    void algorithmComparison();
     void searchTitles();
     void collectRatings();
     bool scoresCalculated = false;
