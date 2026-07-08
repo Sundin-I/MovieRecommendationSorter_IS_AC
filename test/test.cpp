@@ -1,53 +1,104 @@
 #include <catch2/catch_test_macros.hpp>
-#include <iostream>
+#include "minHeap.h"
+#include "quicksort.h"
 
-// uncomment and replace the following with your own headers
-// #include "AVL.h"
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
-// the syntax for defining a test is below. It is important for the name to be unique, but you can group multiple tests with [tags]. A test can have [multiple][tags] using that syntax.
-TEST_CASE("Example Test Name - Change me!", "[flag]"){
-	// instantiate any class members that you need to test here
-	int one = 1;
-
-	// anything that evaluates to false in a REQUIRE block will result in a failing test 
-	REQUIRE(one == 0); // fix me!
-
-	// all REQUIRE blocks must evaluate to true for the whole test to pass
-	REQUIRE(false); // also fix me!
+Movie makeMovie(int id, double score) {
+    Movie movie;
+    movie.movieId = id;
+    movie.movieName = "Movie " + to_string(id);
+    movie.recommendationScore = score;
+    return movie;
 }
 
-TEST_CASE("Test 2", "[flag]"){
-	// you can also use "sections" to share setup code between tests, for example:
-	int one = 1;
+TEST_CASE("Min heap returns movies from lowest score to highest score", "[minHeap]") {
+    minHeap heap;
 
-	SECTION("num is 2") {
-		int num = one + 1;
-		REQUIRE(num == 2);
-	};
+    heap.insert(makeMovie(1, 3.5));
+    heap.insert(makeMovie(2, 1.2));
+    heap.insert(makeMovie(3, 4.8));
+    heap.insert(makeMovie(4, 2.0));
 
-	SECTION("num is 3") {
-		int num = one + 2;
-		REQUIRE(num == 3);
-	};
-
-	// each section runs the setup code independently to ensure that they don't affect each other
+    REQUIRE(heap.deleteMin().movieId == 2);
+    REQUIRE(heap.deleteMin().movieId == 4);
+    REQUIRE(heap.deleteMin().movieId == 1);
+    REQUIRE(heap.deleteMin().movieId == 3);
+    REQUIRE(heap.empty());
 }
 
-// you must write 5 unique, meaningful tests for credit on the testing portion of this project!
+TEST_CASE("Min heap safely handles empty heap operations", "[minHeap]") {
+    minHeap heap;
 
-// the provided test from the template is below.
+    REQUIRE(heap.empty());
+    REQUIRE(heap.size() == 0);
+    REQUIRE(heap.obtainMin().recommendationScore == 0);
+    REQUIRE(heap.deleteMin().recommendationScore == 0);
+}
 
-TEST_CASE("Example BST Insert", "[flag]"){
-	/*
-		MyAVLTree tree;   // Create a Tree object
-		tree.insert(3);
-		tree.insert(2);
-		tree.insert(1);
-		std::vector<int> actualOutput = tree.inorder();
-		std::vector<int> expectedOutput = {1, 2, 3};
-		REQUIRE(expectedOutput.size() == actualOutput.size());
-		REQUIRE(actualOutput == expectedOutput);
-	*/
+TEST_CASE("Quick sort orders movies by recommendation score descending", "[quicksort]") {
+    vector<Movie> movies = {
+        makeMovie(1, 2.1),
+        makeMovie(2, 4.9),
+        makeMovie(3, 3.3),
+        makeMovie(4, 4.1)
+    };
+
+    quickSort(movies);
+
+    REQUIRE(movies[0].movieId == 2);
+    REQUIRE(movies[1].movieId == 4);
+    REQUIRE(movies[2].movieId == 3);
+    REQUIRE(movies[3].movieId == 1);
+    REQUIRE(isSortedDescending(movies));
+}
+
+TEST_CASE("Sorted descending helper detects unsorted movie scores", "[quicksort]") {
+    vector<Movie> sortedMovies = {
+        makeMovie(1, 5.0),
+        makeMovie(2, 4.0),
+        makeMovie(3, 1.0)
+    };
+    vector<Movie> unsortedMovies = {
+        makeMovie(1, 5.0),
+        makeMovie(2, 1.0),
+        makeMovie(3, 4.0)
+    };
+
+    REQUIRE(isSortedDescending(sortedMovies));
+    REQUIRE_FALSE(isSortedDescending(unsortedMovies));
+}
+
+TEST_CASE("Heap top-k approach keeps only the highest scoring movies", "[minHeap][topK]") {
+    vector<Movie> movies = {
+        makeMovie(1, 1.0),
+        makeMovie(2, 5.0),
+        makeMovie(3, 3.0),
+        makeMovie(4, 4.0),
+        makeMovie(5, 2.0)
+    };
+    minHeap heap;
+    int k = 3;
+
+    for (const auto &movie : movies) {
+        if (heap.size() < k) {
+            heap.insert(movie);
+        }
+        else if (isMovieRankedHigher(movie, heap.obtainMin())) {
+            heap.deleteMin();
+            heap.insert(movie);
+        }
+    }
+
+    vector<int> topMovieIds;
+    while (!heap.empty()) {
+        topMovieIds.push_back(heap.deleteMin().movieId);
+    }
+
+    sort(topMovieIds.begin(), topMovieIds.end());
+
+    REQUIRE(topMovieIds == vector<int>{2, 3, 4});
 }

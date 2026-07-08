@@ -1,0 +1,48 @@
+Team Name: Team 2
+
+Team Members: Isabelle Sundin, Aubrey Corcoran, Vincent Pinolini (?)
+
+Project Title: Movie Recommendation Sorter
+
+Problem: What problem are we trying to solve?
+The problem we are trying to solve is how to efficiently identify and rank top movie recommendations from a 100K movie rankings dataset, as manually trying to determine which movies should be recommended would not be very efficient. We will compare two different sorting algorithms to determine which one will perform best when ranking movie recommendations. We will also display each algorithm’s runtime.
+
+Motivation: Why is this a problem?
+This is a problem because movie recommendation systems are commonly used by a variety of streaming platforms, movie review websites, and other online databases to help users quickly find movies they might want to watch. These systems need efficient algorithms so that users are not left waiting endlessly for their movie recommendations to load. Additionally, movie recommendations may need to account for different user preferences, like genres, total user rating out of 5 stars, or total view count. By comparing two different sorting algorithms, we can better understand which algorithm will be the best choice for end-users.
+
+Features: When do we know that we have solved the problem?
+We will know that we have solved the problem when our program can successfully load and process the MovieLens dataset, calculate a recommendation score for each movie, and display the top recommended movies based on user-selected value of k, which could be something like the top 10 or 20 or 100 movies. We can also allow recommendations to be ranked overall or filtered by genre. The program will compare two sorting algorithms by running them on the same dataset and recording their runtimes. The results will show whether both algorithms produced the same rankings, or which one performs better. We will also include basic tests to verify the program loads the data correctly, calculates recommendation scores correctly, returns the correct number of top k movies, and handles unsuccessful cases with an error message.
+Dataset:
+We will be using the MovieLens 100K dataset from the GroupLens site: LINK 
+This dataset contains 100K records of user movie ratings. This dataset is exactly enough data points for this project and takes into consideration potential machine hardware limitations for any group members. 
+The main file in this dataset directory once installed and unzipped is u.data, and it includes all of the movie rating records. This file doesn’t include column headers, but the README identifies them as: user_id, movie_id, rating, and timestamp. Before we discovered this info within the README, the 4th column in the dataset initially appeared very odd and we thought it was a random number, but upon further research, it appears to be a Unix-style timestamp, which is essentially “seconds since January 1, 1970 (see: references, line 2).
+Another file, u.item, includes the columns: movie_id, movie_title, release_date, video_release_date, IMDb_URL, and genre_flags. 
+The 19 genre flags in order are: unknown, action, adventure, animation, children’s, comedy, crime, documentary, drama, fantasy, film-noir, horror, musical, mystery, romance, sci-fi, thriller, war, western.
+They are separated by | and store binary values; a 1 meaning the movie belongs to that genre, and a 0 meaning that it does not. One movie can have multiple genres.
+There are also some other files that include user info, but we do not need that info for this project.
+Tools: Programming languages or any tools/frameworks we will be using: 
+We currently plan to use C++ as the main programming language for this project. C++ will allow us to effectively implement and compare two sorting algorithms while working with file input, data structures, and runtime results. 
+We will use GitHub for code collaboration, version control, and sharing updated code between team members. Aubrey will use Visual Studio Code as her IDE, while Isabelle is split between deciding to use Visual Studio Code or Clion. We will improvise and add any necessary includes at the top of all files and go from there. 
+
+Visuals: Wireframes/Sketches of the interface or the menu driven program
+Movie Recommendation Menu:
+Load dataset
+Display total count of movie recommendations
+Calculate movie recommendation scores
+Display top movie recommendations
+Display top movie recommendations by genre
+Compare algorithm performance/runtime
+Search movie by title
+Exit
+Strategy: Preliminary algorithms or data structures and how data is to be represented
+We plan to represent the data using structs for ratings and movies. The u.data file will provide movie rating records, and the u.item file will provide movie data records. Our program will process the data and calculate each movie’s recommendation score using the average rating data. 
+We plan to compare a min-heap top k algorithm with a quicksort algorithm. The heap-based approach will keep track of the top k recommended movies, while the quicksort approach will sort through the entire movie list.
+The min-heap approach seems like it will be more efficient, because if a new movie has a higher recommendation score than the movie at the root of the min-heap, the root would be removed and replaced with the “better” movie, followed by rebalancing the heap. 
+
+Distribution of Responsibility and Roles: Who is responsible for what?
+Aubrey: Design/organize movie rating data structures, processing the dataset, implementing the QuickSort algorithm, and preparing the final video presentation.
+Isabelle: makes the Google Docs for project reports, the designing of UI/menu, creating the min heap.
+Both: overall debugging, testing, and proposal report. 
+References: 
+F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context. ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4, Article 19 (December 2015), 19 pages. DOI=http://dx.doi.org/10.1145/2827872
+Unix Time Stamp - Epoch Converter, www.unixtimestamp.com/. Accessed 19 June 2026

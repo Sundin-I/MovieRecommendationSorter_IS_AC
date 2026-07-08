@@ -4,19 +4,20 @@
 
 #ifndef PROJECT1_MOVIECOLLECTION_H
 #define PROJECT1_MOVIECOLLECTION_H
+
 #include <string>
-#include <unordered_map>
 #include <vector>
 
 #include "minHeap.h"
 
+using namespace std;
 
 class movieCollection {
 private:
-    vector<Movies> movies;
-    minHeap movieData;
-    unordered_map<int, string> ratingSum;
-    unordered_map<int, int> ratingCount;
+    vector<Movie> movies;
+    int totalRatingsLoaded = 0;
+    bool scoresCalculated = false;
+
 public:
     void loadsDataSet();
     void totalCountofRecommendation();
@@ -25,10 +26,6 @@ public:
     void showTopKmovies_bygenre();
     void algorithmComparison();
     void searchTitles();
-    void collectRatings();
-    bool scoresCalculated = false;
 };
-
-
 
 #endif //PROJECT1_MOVIECOLLECTION_H

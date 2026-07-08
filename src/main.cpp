@@ -8,7 +8,7 @@ void printingTheMenu() {
     cout << endl;
     cout<<"------Movie Recommendation Menu: ------" <<endl;
     cout<<"1. Load dataset" <<endl;
-    cout<<"2. Display total count of movie recommendations" <<endl;
+    cout<<"2. Display total count of movies and ratings loaded" <<endl;
     cout<<"3. Calculate movie recommendation scores" <<endl;
     cout<<"4. Display top movie recommendations" <<endl;
     cout<<"5. Display top movie recommendations by genre" <<endl;
@@ -53,11 +53,5 @@ int main(){
         else if (userInput == "8") {
             break;
         }
-
-
-
-        }
     }
-
-
-
+}
