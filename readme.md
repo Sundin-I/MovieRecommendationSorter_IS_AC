@@ -10,9 +10,9 @@ Instead of clicking buttons, you type a number from the menu and press Enter.
 
 ## Team
 
-- Isabelle Sundin
-- Aubrey Corcoran
-- Vincent Pinolini
+- Isabelle Sundin:  https://github.com/Sundin-I
+- Aubrey Corcoran:  https://github.com/CtrlAubDel
+- Vincent Pinolini: https://github.com/vpinolini
 
 ## What You Need
 
