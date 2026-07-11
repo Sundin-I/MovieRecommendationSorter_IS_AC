@@ -251,7 +251,7 @@ Then start the program again:
 After building the project, run:
 
 ```powershell
-.\build\Tests.exe
+./build/Main.exe
 ```
 
 The tests check important project logic, including sorting and heap behavior.
