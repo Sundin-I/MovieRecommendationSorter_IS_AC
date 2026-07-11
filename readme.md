@@ -29,6 +29,30 @@ If you want to rebuild the program from the source code, you also need:
 
 ## Easiest Way to Run the Program
 
+### First, Get the Project Onto Your Computer
+
+If you do not already have this project folder on your computer, you can clone it
+from GitHub.
+
+1. Open a terminal in the folder where you want to save the project.
+2. Type this command and press Enter:
+
+   ```powershell
+   git clone https://github.com/Sundin-I/MovieRecommendationSorter_IS_AC_VP.git
+   ```
+
+3. Move into the new project folder:
+
+   ```powershell
+   cd MovieRecommendationSorter_IS_AC_VP
+   ```
+
+If Git is not installed, you can also go to the GitHub page in a web browser,
+click the green Code button, click Download ZIP, unzip the folder, and open that
+folder on your computer.
+
+### Then, Run the Program
+
 1. Open the project folder.
 2. Open a terminal in that folder.
    - In VS Code, you can use Terminal > New Terminal.
