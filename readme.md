@@ -8,12 +8,15 @@ This is for a Movie Recommendation Sorter that efficiently identifies and rank t
 - When the user types 2, the total amount of movies loaded from the dataset will be displayed.
 - When the user types 3, a recommendation score for each movie is calculate.
   Note: To use the next features: options 1, 2, 3 must be selected (in that order)
-- When the user types 4, it displays the top recommended movies based on user-selected value of k(the user may chose how many movies)//continue fromhere
-- When the user types 5, We can also allow recommendations to be ranked overall or filtered by genre.
-- When the user types 6, The program will compare two sorting algorithms by running them on the same dataset and recording their runtimes. The results will show whether both algorithms produced the same rankings, or which one performs better. We will also include basic tests to verify the program loads the data correctly, calculates recommendation scores correctly, returns the correct number of top k movies, and handles unsuccessful cases with an error message.
+- When the user types 4, it displays the top recommended movies based on user-selected value of k
+  Note: the user may chose how many movies as long as it's not 0. As of creating this program, there's no limit to how many movies can be rated. Same applies to the next feature.
+- When the user types 5, shares the same functions as option 4 but is instead filtered by genre. 
+- When the user types 6, The program will compare two sorting algorithms (MinHeap vs Quicksort) by running them on the same dataset and recording their runtimes
+- //maybe you guys can elaborate on this as I was out of town and couldn't properly test the implementation after the added quicksort.
 - When the user types 7, they're given the ability to search by title (not case sensitive)
+- When the user types 8, the program ends.
 
-
+//each time an option is selected, the menu below always prints after the prior option's response.
 Movie Recommendation Menu:
 1. Load dataset
 2. Display total count of movie recommendations
@@ -24,3 +27,7 @@ Movie Recommendation Menu:
 7. Search movie by title
 8. Exit
 
+
+
+
+//Aubruy can you provide and example implemtnation her?
