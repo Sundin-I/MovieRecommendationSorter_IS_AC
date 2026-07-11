@@ -11,8 +11,7 @@ This is for a Movie Recommendation Sorter that efficiently identifies and rank t
 - When the user types 4, it displays the top recommended movies based on user-selected value of k
   Note: the user may chose how many movies as long as it's not 0. As of creating this program, there's no limit to how many movies can be rated. Same applies to the next feature.
 - When the user types 5, shares the same functions as option 4 but is instead filtered by genre. 
-- When the user types 6, The program will compare two sorting algorithms (MinHeap vs Quicksort) by running them on the same dataset and recording their runtimes
-- //maybe you guys can elaborate on this as I was out of town and couldn't properly test the implementation after the added quicksort.
+- When the user types 6, The program will compare two sorting algorithms (MinHeap vs Quicksort) by running them on the same dataset and recording their runtimes. Spoiler Alert: MinHeap is faster
 - When the user types 7, they're given the ability to search by title (not case sensitive)
 - When the user types 8, the program ends.
 
